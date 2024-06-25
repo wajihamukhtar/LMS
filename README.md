@@ -1,2 +1,4 @@
-# LMS
-student portal with firebase 
+# student-portal
+student-portal with firebase database
+
+checking
