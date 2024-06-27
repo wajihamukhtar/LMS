@@ -82,29 +82,7 @@ const InputField = ({
                   </IconButton>
                 )}
               </InputAdornment>
-            ) : icon ? (
-              <InputAdornment position="end">
-                {icon && (
-                  <IconButton
-                    disableRipple
-                    aria-label="toggle password visibility"
-                    onClick={searchFunction}
-                    edge="end"
-                    sx={{
-                      width: { md: '30px', xl: '34px' },
-                      mr: -1,
-                      color: '#888888',
-                      '&:hover': {
-                        backgroundColor: 'transparent',
-                        color: '#888888',
-                      },
-                    }}
-                  >
-                    <img src="/images/global/search.svg" />
-                  </IconButton>
-                )}
-              </InputAdornment>
-            ) : null
+            )  : null
           }
 
           sx={{

@@ -39,8 +39,13 @@ const theme = createTheme({
       fontWeight: 700,
     },
     h2: {
-      fontSize: '28px',
-      fontWeight: 600,
+      // fontSize: '28px',
+      fontSize: { md: '26px', lg: '30px', xl: '28px' },
+      fontWeight: 500,
+      textDecoration: 'underLine',
+      color: '#404040',
+      width:'70%',
+      textAlign:'center'
     },
     h3: {
       fontSize: '20px',
@@ -51,8 +56,10 @@ const theme = createTheme({
       fontWeight: 700,
     },
     h5: {
-      fontSize: '22px',
-      fontWeight: 600,
+      fontSize: { md: '22px', lg: '24px', xl: '26px' },
+      fontWeight: 500,
+      textDecoration: 'underLine',
+      color: '#404040',
     },
     h6: {
       fontSize: '16px',

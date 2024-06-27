@@ -3,7 +3,6 @@ import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 
 const FormSection = () => {
-
   return (
     <Box
       sx={{
@@ -14,7 +13,7 @@ const FormSection = () => {
         alignItems: 'center',
         height: '100%',
         gap: 4,
-        px: 3.5,
+        
       }}
     >
       <Outlet />

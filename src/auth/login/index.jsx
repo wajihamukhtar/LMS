@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Checkbox, FormControlLabel, Typography } from '@mui/material';
-
 import InputField from '../../components/global/InputField';
 import SubmitButton from '../../components/global/SubmitButton';
 import { Link, useNavigate } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
+import theme from '../../theme';
 
 const Login = () => {
   const { text, checkbox_text, reset_link, button_text, fields, link } =
@@ -22,8 +22,8 @@ const Login = () => {
       ...userData,
       [e.target.name]: e.target.value,
     });
+    console.log(userData)
   };
-
   const handleChangeRemember = (event) => {
     setRememberMe(event.target.checked);
     setUserData({
@@ -31,13 +31,13 @@ const Login = () => {
       remember_me: event.target.checked,
     });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setUserData({ email: '', password: '' });
     setRememberMe(false);
     console.log({ login: userData });
-    navigate('/dashboard')
+    navigate('/Students')
+ 
   };
 
   return (
@@ -53,17 +53,11 @@ const Login = () => {
           alignItems: 'center',
           gap: 2,
           maxWidth: '500px',
-          px: 4,
         }}
       >
         <Box>
           <Typography
-            sx={{
-              fontSize: { md: '22px', lg: '24px', xl: '26px' },
-              fontWeight: 500,
-              textDecoration: 'underLine',
-              color: '#404040',
-            }}
+            sx={theme.typography.h5}
           >
             {text}
           </Typography>
@@ -166,6 +160,7 @@ const Login = () => {
             gap: 1.4,
             alignItems: 'center',
             pt: 5,
+            px:4,
           }}
         >
           <SubmitButton
