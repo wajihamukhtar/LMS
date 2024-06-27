@@ -6,6 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
 import theme from '../../theme';
 
+import {  signInWithEmailAndPassword} from "firebase/auth";
+
 const Login = () => {
   const { text, checkbox_text, reset_link, button_text, fields, link } =
     Auth_Data?.login || {};
@@ -22,7 +24,7 @@ const Login = () => {
       ...userData,
       [e.target.name]: e.target.value,
     });
-    console.log(userData)
+
   };
   const handleChangeRemember = (event) => {
     setRememberMe(event.target.checked);
@@ -35,9 +37,16 @@ const Login = () => {
     e.preventDefault();
     setUserData({ email: '', password: '' });
     setRememberMe(false);
-    console.log({ login: userData });
-    navigate('/Students')
- 
+    // navigate('/Students')
+    signInWithEmailAndPassword( userData.email, userData.password)
+    .then((res) => {
+      const user = res.user;
+      console.log('User login account:', user);
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      console.error('Error login user:', errorMessage);
+    });
   };
 
   return (
@@ -45,6 +54,7 @@ const Login = () => {
       <Box
         action="#"
         component={'form'}
+        type={'submit'}
         onSubmit={(e) => handleSubmit(e)}
         sx={{
           width: '100%',
@@ -53,6 +63,7 @@ const Login = () => {
           alignItems: 'center',
           gap: 2,
           maxWidth: '500px',
+        
         }}
       >
         <Box>
@@ -114,7 +125,7 @@ const Login = () => {
                   backgroundColor: 'transparent',
                 },
                 '&.Mui-checked': {
-                  color: 'primary !important',
+                  color: 'success !important',
                 },
               },
             }}
@@ -123,7 +134,8 @@ const Login = () => {
                 disableRipple
                 checked={rememberMe}
                 onChange={handleChangeRemember}
-                color="primary"
+                color="success"
+                border='1px solid success'
               />
             }
             label={
@@ -160,7 +172,7 @@ const Login = () => {
             gap: 1.4,
             alignItems: 'center',
             pt: 5,
-            px:4,
+            px: 4,
           }}
         >
           <SubmitButton
@@ -170,20 +182,19 @@ const Login = () => {
             style={{
               width: '100%',
               height: '40px',
-              border: '1px solid #FEBD17',
               borderRadius: '10px',
               fontSize: '16px',
               fontWeight: 500,
               color:
                 !userData?.email || !userData?.password || !rememberMe
-                  ? '#FEBD17 !important'
-                  : '#404040',
+                  ? '#008000 !important'
+                  : '#ffffff',
               backgroundColor:
                 !userData?.email || !userData?.password || !rememberMe
-                  ? '#FAFAFA'
-                  : '#FEBD17',
+                  ? ' #e6ffe6'
+                  : '#008000',
               '&:hover': {
-                backgroundColor: '#FEBD17',
+                backgroundColor: '#008000',
               },
             }}
           />
@@ -200,8 +211,8 @@ const Login = () => {
             <Typography
               sx={{
                 fontSize: '16px',
-                fontWeight: 400,
-                color: '#FEBD17',
+                fontWeight: 500,
+                color: '#008000',
                 textDecoration: 'underLine',
               }}
             >
@@ -212,6 +223,6 @@ const Login = () => {
       </Box>
     </>
   );
-};
+}
 
 export default Login;
