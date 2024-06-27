@@ -5,7 +5,8 @@ import SubmitButton from '../../components/global/SubmitButton';
 import { Link } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
 
-import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
+import { createUserWithEmailAndPassword} from 'firebase/auth';
+import { db } from '../../firebaseConfig';
 
 const Signup = () => {
   const { text, button_text, fields, link } = Auth_Data?.signup || {};
@@ -46,8 +47,8 @@ const Signup = () => {
       email: '',
       password: '',
     });
-    const auth=getAuth()
-    createUserWithEmailAndPassword(auth,userData.first_name,userData.last_name, userData.email, userData.password)
+ 
+    createUserWithEmailAndPassword(db,userData.first_name,userData.last_name, userData.email, userData.password)
     .then((res) => {
       const user = res.user;
       console.log('User created acount:', user);

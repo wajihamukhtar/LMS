@@ -7,6 +7,7 @@ import { Auth_Data } from '../../constants/auth_constant';
 import theme from '../../theme';
 
 import {  signInWithEmailAndPassword} from "firebase/auth";
+import { db } from '../../firebaseConfig';
 
 const Login = () => {
   const { text, checkbox_text, reset_link, button_text, fields, link } =
@@ -38,7 +39,7 @@ const Login = () => {
     setUserData({ email: '', password: '' });
     setRememberMe(false);
     // navigate('/Students')
-    signInWithEmailAndPassword( userData.email, userData.password)
+    signInWithEmailAndPassword(db, userData.email, userData.password)
     .then((res) => {
       const user = res.user;
       console.log('User login account:', user);
