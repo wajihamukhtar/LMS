@@ -6,8 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
 import theme from '../../theme';
 
-import {  signInWithEmailAndPassword} from "firebase/auth";
-import { db } from '../../firebaseConfig';
+import {  getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import { app } from '../firebaseConfig';
 
 const Login = () => {
   const { text, checkbox_text, reset_link, button_text, fields, link } =
@@ -34,12 +34,13 @@ const Login = () => {
       remember_me: event.target.checked,
     });
   };
+const auth=getAuth(app)
   const handleSubmit = (e) => {
     e.preventDefault();
     setUserData({ email: '', password: '' });
     setRememberMe(false);
     // navigate('/Students')
-    signInWithEmailAndPassword(db, userData.email, userData.password)
+    signInWithEmailAndPassword(auth, userData.email, userData.password)
     .then((res) => {
       const user = res.user;
       console.log('User login account:', user);
@@ -188,7 +189,7 @@ const Login = () => {
               fontWeight: 500,
               color:
                 !userData?.email || !userData?.password || !rememberMe
-                  ? '#008000 !important'
+                  ? '#E4E4E4 !important'
                   : '#ffffff',
               backgroundColor:
                 !userData?.email || !userData?.password || !rememberMe

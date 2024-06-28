@@ -4,9 +4,10 @@ import InputField from '../../components/global/InputField';
 import SubmitButton from '../../components/global/SubmitButton';
 import { Link } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
-
+import { getAuth } from 'firebase/auth';
 import { createUserWithEmailAndPassword} from 'firebase/auth';
-import { db } from '../../firebaseConfig';
+import { app } from '../firebaseConfig';
+
 
 const Signup = () => {
   const { text, button_text, fields, link } = Auth_Data?.signup || {};
@@ -37,18 +38,12 @@ const Signup = () => {
       return setDisabled(true);
     }
   }, [userData]);
-
+const auth=getAuth(app)
   const handleSubmit = (e) => {
     e.preventDefault();
     // navigate('/Students')
-    setUserData({
-      first_name: '',
-      last_name: '',
-      email: '',
-      password: '',
-    });
- 
-    createUserWithEmailAndPassword(db,userData.first_name,userData.last_name, userData.email, userData.password)
+    
+    createUserWithEmailAndPassword(auth,userData.email.trim(), userData.password.trim())
     .then((res) => {
       const user = res.user;
       console.log('User created acount:', user);
@@ -56,6 +51,12 @@ const Signup = () => {
     .catch((error) => {
       const errorMessage = error.message;
       console.error('Error creating user:', errorMessage);
+    });
+    setUserData({
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
     });
   };
 
@@ -135,8 +136,8 @@ const Signup = () => {
               borderRadius: '10px',
               fontSize: '16px',
               fontWeight: 500,
-              color: disbled ? '#FEBD17 !important' : '#404040',
-              backgroundColor: disbled ? '#FAFAFA' : '#FEBD17',
+              color: disbled ? '#008000 !important' : '#FAFAFA',
+              backgroundColor: disbled ? '#FAFAFA' : '#008000',
               '&:hover': {
                 backgroundColor: '#FEBD17',
               },
