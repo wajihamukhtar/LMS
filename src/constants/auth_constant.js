@@ -59,12 +59,35 @@ export const Auth_Data = {
     },
     {
       text:'Teachers',
-      route:'/students/student-list'
+      route:'/students/teachers-list'
     },
     {
       text:'School',
+      route:'/students/registration'
+    },
+    {
+      text:'Students',
       route:'/students/student-list'
-    }
+    },
+    {
+      text:'Class',
+      route:'/students/teachers-list'
+    },{
+      text:'Syllabus',
+      route:'/students/student-list'
+    },
+    {
+      text:'Fees',
+      route:'/students/teachers-list'
+    },
+    ,{
+      text:'Admission',
+      route:'/students/student-list'
+    },
+    {
+      text:'Exam',
+      route:'/students/teachers-list'
+    },
 
   ]
 };
