@@ -3,6 +3,8 @@ import Login from '../auth/login';
 import Signup from '../auth/signup';
 import AuthLayout from '../layouts/AuthLayout';
 import DashboardLayout from '../layouts/DashboardLayout';
+import { NavbarLayout } from '../layouts/NavbarLayout';
+import { SidebarLayout } from '../layouts/SidebarLayout';
 
 // Private
 import Students from '../screens/students';
@@ -14,7 +16,7 @@ export const routes = {
   login: '/',
   signup: '/signup',
   students: '/students',
-  students_list: '/students/list',
+  students_list: '/students/student-list',
   transfer_student: '/students/transfer-student',
   error: '*',
 };
@@ -30,6 +32,14 @@ export const publicRoutes = [
       {
         path: routes.signup,
         element: <Signup />,
+      },
+      {
+        path: routes.navbar,
+        element: <NavbarLayout/>,
+      },
+      {
+        path: routes.sidebar,
+        element: <SidebarLayout/>,
       },
     ],
   },

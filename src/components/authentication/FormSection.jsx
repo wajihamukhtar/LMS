@@ -13,8 +13,8 @@ const FormSection = () => {
         alignItems: 'center',
         height: '100%',
         gap: 4,
-          backgroundColor: '#ccffcc'
-        
+        backgroundColor: '	#F5F5F5',
+        paddingTop:'40px'
       }}
     >
       <Outlet />

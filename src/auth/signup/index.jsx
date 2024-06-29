@@ -132,14 +132,14 @@ const auth=getAuth(app)
             style={{
               width: '100%',
               height: '40px',
-              border: '1px solid #FEBD17',
+              border: '1px solid #FAFAFA',
               borderRadius: '10px',
               fontSize: '16px',
               fontWeight: 500,
               color: disbled ? '#008000 !important' : '#FAFAFA',
               backgroundColor: disbled ? '#FAFAFA' : '#008000',
               '&:hover': {
-                backgroundColor: '#FEBD17',
+                backgroundColor: '#006600',
               },
             }}
           />
@@ -157,7 +157,7 @@ const auth=getAuth(app)
               sx={{
                 fontSize: '16px',
                 fontWeight: 400,
-                color: '#FEBD17',
+                color: '#008000',
                 textDecoration: 'underLine',
               }}
             >

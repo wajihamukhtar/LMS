@@ -45,4 +45,26 @@ export const Auth_Data = {
       },
     ],
   },
+  navbar: {
+    text: 'LOGIN',
+    checkbox_text: 'Remember me',
+    reset_link: { text: 'click here?', href: '#' },
+    button_text: 'Login',
+    link: { text: 'Sign up', href: '/signup' },
+  },
+  sidebarList: [
+    {
+      text:'Students',
+      route:'/students/student-list'
+    },
+    {
+      text:'Teachers',
+      route:'/students/student-list'
+    },
+    {
+      text:'School',
+      route:'/students/student-list'
+    }
+
+  ]
 };

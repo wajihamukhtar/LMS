@@ -35,11 +35,13 @@ const Login = () => {
     });
   };
 const auth=getAuth(app)
+
   const handleSubmit = (e) => {
+  
     e.preventDefault();
     setUserData({ email: '', password: '' });
     setRememberMe(false);
-    // navigate('/Students')
+    navigate('/Students')
     signInWithEmailAndPassword(auth, userData.email, userData.password)
     .then((res) => {
       const user = res.user;
@@ -96,8 +98,9 @@ const auth=getAuth(app)
                 fontSize: '13px',
                 fontWeight: 400,
                 color: '#888888',
-                border: '1px solid #E4E4E4',
+                border: '2px solid #E4E4E4',
                 height: '40px',
+                backgroundColor:" transparent"
               }}
             />
           ))}
@@ -188,15 +191,15 @@ const auth=getAuth(app)
               fontSize: '16px',
               fontWeight: 500,
               color:
-                !userData?.email || !userData?.password || !rememberMe
-                  ? '#E4E4E4 !important'
+                !userData?.email || !userData?.password || !rememberMe 
+                  ? '#008000 !important'
                   : '#ffffff',
               backgroundColor:
                 !userData?.email || !userData?.password || !rememberMe
-                  ? ' #e6ffe6'
+                  ? '#e6ffe6'
                   : '#008000',
               '&:hover': {
-                backgroundColor: '#008000',
+                backgroundColor: '#006600',
               },
             }}
           />

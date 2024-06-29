@@ -20,7 +20,6 @@ const InputField = ({
   onChange,
   onBlur,
   error,
-  searchFunction,
 }) => {
   const [showPassword, setShowPassword] = React.useState(false);
 
