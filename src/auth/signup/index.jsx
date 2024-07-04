@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import InputField from '../../components/global/InputField';
 import SubmitButton from '../../components/global/SubmitButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
 import { getAuth } from 'firebase/auth';
-import { createUserWithEmailAndPassword} from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { app } from '../firebaseConfig';
 
 
 const Signup = () => {
   const { text, button_text, fields, link } = Auth_Data?.signup || {};
+  const navigate = useNavigate()
   const [disbled, setDisabled] = useState(true);
   const [userData, setUserData] = useState({
     first_name: '',
@@ -38,20 +39,21 @@ const Signup = () => {
       return setDisabled(true);
     }
   }, [userData]);
-const auth=getAuth(app)
+  const auth = getAuth(app)
   const handleSubmit = (e) => {
     e.preventDefault();
-    // navigate('/Students')
-    
-    createUserWithEmailAndPassword(auth,userData.email.trim(), userData.password.trim())
-    .then((res) => {
-      const user = res.user;
-      console.log('User created acount:', user);
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      console.error('Error creating user:', errorMessage);
-    });
+    createUserWithEmailAndPassword(auth, userData.email.trim(), userData.password.trim())
+      .then((res) => {
+        const user = res.user;
+        if (user) {
+          navigate('/')
+        }
+        console.log('User created acount:', user);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.error('Error creating user:', errorMessage);
+      });
     setUserData({
       first_name: '',
       last_name: '',

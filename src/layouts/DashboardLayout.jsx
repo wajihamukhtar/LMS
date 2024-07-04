@@ -64,7 +64,7 @@ const DashboardLayout = () => {
                 py: { xs: 2, sm: 2.5, md: 3, lg: 5 },
               }}
             >
-           <Outlet/>
+              <Outlet />
             </Box>
           </LayoutContainer>
         </LayoutBodyRoot>

@@ -4,10 +4,10 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#FEBD17',
+      main: '#008000',
     },
     secondary: {
-      main: '#404040',
+      main: '#e6ffe6',
     },
     info: {
       main: '##888888 ',
@@ -20,7 +20,7 @@ const theme = createTheme({
     },
     text: {
       primary: '#FEBD17',
-      secondary: '#404040',
+      secondary: '#008000',
     },
   },
   breakpoints: {
@@ -39,13 +39,12 @@ const theme = createTheme({
       fontWeight: 700,
     },
     h2: {
-      // fontSize: '28px',
       fontSize: { md: '26px', lg: '30px', xl: '28px' },
       fontWeight: 500,
       textDecoration: 'underLine',
       color: '#404040',
-      width:'70%',
-      textAlign:'center'
+      width: '70%',
+      textAlign: 'center'
     },
     h3: {
       fontSize: '20px',

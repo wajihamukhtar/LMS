@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
 import theme from '../../theme';
 
-import {  getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from '../firebaseConfig';
 
 const Login = () => {
@@ -34,25 +34,29 @@ const Login = () => {
       remember_me: event.target.checked,
     });
   };
-const auth=getAuth(app)
+  const auth = getAuth(app)
 
   const handleSubmit = (e) => {
-  
     e.preventDefault();
     setUserData({ email: '', password: '' });
     setRememberMe(false);
-    navigate('/Students')
     signInWithEmailAndPassword(auth, userData.email, userData.password)
-    .then((res) => {
-      const user = res.user;
-      console.log('User login account:', user);
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      console.error('Error login user:', errorMessage);
-    });
+      .then((res) => {
+        const user = res.user;
+        if (user) {
+          localStorage.setItem('token', JSON.stringify(user));
+          navigate('/students/student-list')
+        }
+        else {
+          navigate('/')
+        }
+        console.log('User login account:', user);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.error('Error login user:', errorMessage);
+      });
   };
-
   return (
     <>
       <Box
@@ -62,12 +66,13 @@ const auth=getAuth(app)
         onSubmit={(e) => handleSubmit(e)}
         sx={{
           width: '100%',
+          minHeight: '400px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           gap: 2,
           maxWidth: '500px',
-        
+
         }}
       >
         <Box>
@@ -100,7 +105,7 @@ const auth=getAuth(app)
                 color: '#888888',
                 border: '2px solid #E4E4E4',
                 height: '40px',
-                backgroundColor:" transparent"
+                backgroundColor: "#fff"
               }}
             />
           ))}
@@ -191,7 +196,7 @@ const auth=getAuth(app)
               fontSize: '16px',
               fontWeight: 500,
               color:
-                !userData?.email || !userData?.password || !rememberMe 
+                !userData?.email || !userData?.password || !rememberMe
                   ? '#008000 !important'
                   : '#ffffff',
               backgroundColor:

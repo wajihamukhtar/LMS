@@ -1,12 +1,19 @@
+import { Box } from '@mui/material';
 import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
 import { TreeItem } from '@mui/x-tree-view/TreeItem';
-
-export const BATreeView=(treeStructure)=>{
- <SimpleTreeView>
-        <TreeItem itemId="grid" label="Data Grid">
-          <TreeItem itemId="grid-community" label="@mui/x-data-grid" />
-          <TreeItem itemId="grid-pro" label="@mui/x-data-grid-pro" />
-          <TreeItem itemId="grid-premium" label="@mui/x-data-grid-premium" />
-        </TreeItem>
-      </SimpleTreeView> 
+const sidebarLinks = [
+  { icon: '', label: 'Students', items: ['Student list', 'Transfer Student', 'Student Add'] }
+]
+export const BATreeView=()=>{
+  <Box sx={{ width: 250 }} role="presentation">
+  {sidebarLinks.map((item, index) => (
+    <SimpleTreeView key={index}>
+      <TreeItem nodeId={index.toString()} label={item.label}>
+        {item.items.map((subItem, subIndex) => (
+          <TreeItem key={subIndex} nodeId={`${index}-${subIndex}`} label={subItem} />
+        ))}
+      </TreeItem>
+    </SimpleTreeView>
+  ))}
+</Box>
 }

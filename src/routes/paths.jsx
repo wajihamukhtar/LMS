@@ -10,14 +10,20 @@ import { SidebarLayout } from '../layouts/SidebarLayout';
 import Students from '../screens/students';
 import StudentList from '../screens/students/StudentList';
 import TransferStudent from '../screens/students/TransferStudent';
+import Teachers from '../screens/teachers';
+import TeacherAllocation from '../screens/teachers/TeacherAllocation';
+import TeacherList from '../screens/teachers/TeacherList';
 
 
 export const routes = {
   login: '/',
   signup: '/signup',
-  students: '/students',
+  students: '/students/student-add',
   students_list: '/students/student-list',
   transfer_student: '/students/transfer-student',
+  teachers: '/teachers/teacher-add',
+  teachers_list: '/teachers/teachers-list',
+  teacher_allocation: '/teachers/teacher-allocation',
   error: '*',
 };
 
@@ -35,11 +41,11 @@ export const publicRoutes = [
       },
       {
         path: routes.navbar,
-        element: <NavbarLayout/>,
+        element: <NavbarLayout />,
       },
       {
         path: routes.sidebar,
-        element: <SidebarLayout/>,
+        element: <SidebarLayout />,
       },
     ],
   },
@@ -63,6 +69,18 @@ export const privateRoutes = [
         element: <TransferStudent />,
       },
       // Teacher routes
+      {
+        path: routes.teachers,
+        element: <Teachers />,
+      },
+      {
+        path: routes.teachers_list,
+        element: <TeacherList />,
+      },
+      {
+        path: routes.teacher_allocation,
+        element: <TeacherAllocation />,
+      },
     ],
   },
 ];

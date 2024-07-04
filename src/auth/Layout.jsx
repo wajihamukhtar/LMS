@@ -1,49 +1,38 @@
-import { Box, Grid } from '@mui/material';
-import LogoSection from '../components/authentication/LogoSection';
+import * as React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import FormSection from '../components/authentication/FormSection';
+import LogoSection from '../components/authentication/LogoSection';
 
-const Authentication = () => {
+export default function AuthLayout() {
   return (
-    <Box
-      sx={{
-        p: 3,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-      }}
-    >
-      <Box
-        sx={{
-          width: '100%',
-          height: '100%',
-          minHeight: '750px',
-          maxWidth: '1400px',
-          maxHeight: '900px',
-          borderRadius: '10px',
-          display: 'flex',
-          alignItems: 'center',
-          boxShadow: '0px 0px 10px 0px #00000040',
-        }}
+    <Grid container component="main" sx={{ height: '100vh', overflow: 'auto' }}>
+      <CssBaseline />
+      <Grid
+        item
+        xs={false}
+        md={6}
       >
-        <Grid container height={'100%'}>
-          <Grid
-            item
-            lg={6}
-            sx={{
-              display: { xs: 'none', lg: 'block' },
-              height: '100%',
-            }}
-          >
-            <LogoSection />
-          </Grid>
-          <Grid item xs={12} lg={6}>
-            <FormSection />
-          </Grid>
-        </Grid>
-      </Box>
-    </Box>
+        <LogoSection />
+      </Grid>
+      <Grid item xs={12} md={6} component={Paper} >
+        <Box
+          sx={{
+            py: 4,
+            px: 4,
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '	#F5F5F5',
+          }}
+        >
+          <FormSection />
+        </Box>
+      </Grid>
+    </Grid>
   );
-};
-
-export default Authentication;
+}

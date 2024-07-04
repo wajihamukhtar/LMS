@@ -1,46 +1,41 @@
-import { Box, Grid } from '@mui/material';
-import LogoSection from '../components/authentication/LogoSection';
+import * as React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import FormSection from '../components/authentication/FormSection';
+import LogoSection from '../components/authentication/LogoSection';
 
-const AuthLayout = () => {
+export default function AuthLayout() {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-      }}
-    >
-      {/* <Box
+    <Grid container component="main" sx={{ height: '100vh', overflow: 'auto' }}>
+      <CssBaseline />
+      <Grid
+        item
+        xs={false}
+        md={6}
         sx={{
-          width: '100%',
-          height: '100%',
-          // maxWidth: '1400px',
-          borderRadius: '10px',
-          display: 'flex',
-          alignItems: 'center',
-          boxShadow: '0px 0px 10px 0px #00000040',
+          pt: 5,
         }}
-   delete   // > */}
-      <Grid container height={'100%'}>
-        <Grid
-          item
-          lg={6}
+      >
+        <LogoSection />
+      </Grid>
+      <Grid item xs={12} md={6} component={Paper} >
+        <Box
           sx={{
-            display: { xs: 'none', lg: 'block' },
+            py: 4,
+            px: 4,
             height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '	#F5F5F5',
           }}
         >
-          <LogoSection />
-        </Grid>
-        <Grid item xs={12} lg={6}>
           <FormSection />
-        </Grid>
+        </Box>
       </Grid>
-      {/* </Box> */}
-    </Box>
+    </Grid>
   );
-};
-
-export default AuthLayout;
+}
