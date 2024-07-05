@@ -1,14 +1,14 @@
-import { Backdrop, Box, Drawer, Typography, useMediaQuery } from '@mui/material';
+import { Backdrop, Box, Drawer,  useMediaQuery } from '@mui/material';
 import { Auth_Data } from '../constants/auth_constant';
 import SidebarAccordion from '../components/global/SidebarAccordion';
 
 export const SidebarLayout = (props) => {
     const { open, onClose } = props;
-    const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+    const lgUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
     const sidebarLinks =Auth_Data?.sidebarLinks || [];
     
     const content = (
-        <Box sx={{ width: 250 }} role="presentation">
+        <Box sx={{ width: 250 ,}} role="presentation">
             <SidebarAccordion sidebarLinks={sidebarLinks} />
         </Box>
     );
@@ -19,12 +19,12 @@ export const SidebarLayout = (props) => {
                 open
                 PaperProps={{
                     sx: {
-                        color: '	 #40bf40',
+                        color: '#40bf40',
                         width: { xs: 280, xl: 350 },
                         marginTop: '70px',
                         overflowX: 'hidden',
                         overflowY: 'hidden',
-                        boxShadow: '2px 5px 5px -2px #00000040'
+                        boxShadow: '5px 5px 5px -1px #00000040'
                     },
                 }}
                 variant="permanent"
@@ -40,6 +40,7 @@ export const SidebarLayout = (props) => {
             open={open}
             BackdropProps={{ click: false }}
             BackdropComponent={(props) => (
+                       
                 <Backdrop {...props} sx={{ backgroundColor: 'rgba(0, 0, 0, 0)' }} />
             )}
             PaperProps={{

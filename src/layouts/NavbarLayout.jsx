@@ -65,9 +65,9 @@ export const NavbarLayout = () => {
         <AppBar position="static">
           <Container maxWidth="xl">
             <Toolbar disableGutters>
-              <SchoolRoundedIcon sx={{ display: { xs: 'none' }, mr: 1 }} />
+              <SchoolRoundedIcon sx={{ mr: 1 }} />
               <Typography
-                variant="h6"
+                variant="h4"
                 noWrap
                 component="a"
                 href="#app-bar-with-responsive-menu"
@@ -79,6 +79,8 @@ export const NavbarLayout = () => {
                   letterSpacing: '.1rem',
                   color: 'inherit',
                   textDecoration: 'none',
+                  
+                 
                 }}
               >
                 Learning Managememnt System
@@ -111,7 +113,7 @@ export const NavbarLayout = () => {
               </Box>
               <SchoolRoundedIcon sx={{ display: { xs: 'none' }, mr: 1 }} />
               <Typography
-                variant="h5"
+                variant="h4"
                 noWrap
                 component="a"
                 href="#app-bar-with-responsive-menu"
@@ -124,6 +126,7 @@ export const NavbarLayout = () => {
                   letterSpacing: '.1rem',
                   color: 'inherit',
                   textDecoration: 'none',
+                  
                 }}
               >
                 Learning Managememnt System
@@ -133,21 +136,21 @@ export const NavbarLayout = () => {
                   <Button
                     key={page}
                     onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
+                    sx={{ my: 2, color: 'white', display: 'none' }}
                   >
                     {page}
                   </Button>
                 ))}
               </Box>
 
-              <Box sx={{ flexGrow: 0 }}>
+              <Box sx={{ flexGrow: 0}}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar alt="Remy Sharp" src="wa" />
                   </IconButton>
                 </Tooltip>
                 <Menu
-                  sx={{ mt: '45px' }}
+                  sx={{ mt: '45px' ,}}
                   id="menu-appbar"
                   anchorEl={anchorElUser}
                   anchorOrigin={{

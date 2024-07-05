@@ -10,9 +10,19 @@ import { SidebarLayout } from '../layouts/SidebarLayout';
 import Students from '../screens/students';
 import StudentList from '../screens/students/StudentList';
 import TransferStudent from '../screens/students/TransferStudent';
+import SubjectList from '../screens/subjects/SubjectList';
+import Subjects from '../screens/subjects';
 import Teachers from '../screens/teachers';
 import TeacherAllocation from '../screens/teachers/TeacherAllocation';
 import TeacherList from '../screens/teachers/TeacherList';
+import Admission from '../screens/admission/Admission';
+import ClassForm from '../screens/class/ClassForm';
+import ClassList from '../screens/class/ClassList';
+import FeesStructure from '../screens/fees/FeeStructure';
+import FeesVoucher from '../screens/fees/FeeVoucher';
+import FeesSubmission from '../screens/fees/FeeSubmission';
+import ExamSchedule from '../screens/exam/ExamSchedule';
+import ResultScreen from '../screens/exam/ExamResult';
 
 
 export const routes = {
@@ -21,9 +31,26 @@ export const routes = {
   students: '/students/student-add',
   students_list: '/students/student-list',
   transfer_student: '/students/transfer-student',
+
   teachers: '/teachers/teacher-add',
   teachers_list: '/teachers/teachers-list',
   teacher_allocation: '/teachers/teacher-allocation',
+
+  subjects: '/subjects/subject-add',
+  subjects_list: '/subjects/subjects-list',
+
+  adimission:'/admission/admission',
+
+  class:'/class/class-form',
+  class_list:'/class/class-list',
+
+  fee:'/class/class-form',
+  fees_structure:'/fees/fee-structure',
+  fees_voucher:'/fees/fee-voucher',
+  fees_submission:'/fees/fee-submission',
+
+  exam_schedule:'/exam/exam-schedule',
+  exam_result:'/exam/exam-result',
   error: '*',
 };
 
@@ -80,6 +107,47 @@ export const privateRoutes = [
       {
         path: routes.teacher_allocation,
         element: <TeacherAllocation />,
+      },
+      {
+        path: routes.subjects,
+        element: <Subjects />,
+      },
+      {
+        path: routes.subjects_list,
+        element: <SubjectList />,
+      },
+      {
+        path: routes.adimission,
+        element: <Admission />,
+      },
+      {
+        path: routes.class,
+        element: <ClassForm />,
+      },
+      {
+        path: routes.class_list,
+        element: <ClassList />,
+      },
+     
+      {
+        path: routes.fees_structure,
+        element: <FeesStructure />,
+      },
+      {
+        path: routes.fees_voucher,
+        element: <FeesVoucher />,
+      },
+      {
+        path: routes.fees_submission,
+        element: <FeesSubmission />,
+      },
+      {
+        path: routes.exam_schedule,
+        element: <ExamSchedule/>,
+      },
+      {
+        path: routes.exam_result,
+        element: <ResultScreen/>,
       },
     ],
   },

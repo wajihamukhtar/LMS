@@ -1,30 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Box, FormControlLabel, Radio, Typography, RadioGroup, FormControl, FormLabel } from '@mui/material';
-import InputField from './InputField';
-import SubmitButton from './SubmitButton';
+import InputField from '../../components/global/InputField';
+import SubmitButton from '../../components/global/SubmitButton';
 import { useNavigate } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
 import theme from '../../theme';
 import { getDatabase, ref, push, set } from "firebase/database";
 
-const AdmissionForm = () => {
-    const { text, button_text, fields, redio } = Auth_Data?.admission|| {};
+const SubjectAdd = () => {
+    const { text, button_text, redio,fields,redio_text} = Auth_Data?.subjectAdd || {};
     const [disbled, setDisabled] = useState(true);
-    const navigate = useNavigate()
     const [userData, setUserData] = useState({
-        first_name: '',
-        last_name: '',
-        qualification: '',
-        date_of_birth:'',
-        father_name:'',
-        email:'',
-        phonenum:'',
-        gender: '',
+        subject_name: '',
+        group:'',
+        class:''
     });
+    
+    const navigate = useNavigate()
     const handleChange = (event) => {
         setUserData({
             ...userData,
-            gender: event.target.value
+            group: event.target.value
         });
     };
 
@@ -37,13 +33,9 @@ const AdmissionForm = () => {
 
     useEffect(() => {
         if (
-            userData?.first_name &&
-            userData?.last_name &&
-            userData?.father_name &&
-            userData?.email &&
-            userData?.qualification &&
-            userData?.phonenum &&
-            userData?.gender
+            userData?.subject_name &&
+            userData?.class &&
+            userData.group
         ) {
             return setDisabled(false);
         } else {
@@ -54,29 +46,21 @@ const AdmissionForm = () => {
         e.preventDefault();
         console.log(userData);
         const db = getDatabase();
-        const admissionRef = push(ref(db, "classlist"));
+        const subjectRef = push(ref(db, "subjects"));
         try {
-            await set(admissionRef, {
-                first_name: userData?.first_name,
-                last_name: userData?.last_name,
-                father_name:userData?.father_name,
-                email: userData?.email,
-                qualification: userData?.qualification,
-                phonenum: userData?.phonenum,
-                gender: userData?.gender
+            await set(subjectRef, {
+                subject_name: userData.subject_name,
+                group:userData.group,
+                class:userData.class
             });
             console.log("Data successfully submitted to Firebase");
             setUserData({
-                first_name: '',
-                last_name: '',
-                father_name:'',
-                email: '',
-                qualification: '',
-                phonenum:'',
-                gender: null
+                subject_name: '',
+                class:'',
+                group:null
             });
-            navigate('/class/class-list')
-
+            
+            navigate('/subjects/subjects-list')
         } catch (error) {
             console.error("Error sending data:", error.message);
         }
@@ -132,7 +116,7 @@ const AdmissionForm = () => {
                                 backgroundColor: "#fff"
                             }}
                         />
-                    ))}
+                    ))} 
 
                 </Box>
                 <Box
@@ -142,7 +126,7 @@ const AdmissionForm = () => {
                     }}
                 >
                     <FormControl>
-                        <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel>
+                        <FormLabel id="demo-controlled-radio-buttons-group">Select Group</FormLabel>
                         <RadioGroup
                             aria-labelledby="demo-controlled-radio-buttons-group"
                             name="controlled-radio-buttons-group"
@@ -151,7 +135,7 @@ const AdmissionForm = () => {
                         >
                             {redio?.map(({ text, value }) => (
                                 <FormControlLabel name={value} value={text} control={<Radio />} label={text} />
-
+                    
                             ))}
                         </RadioGroup>
                     </FormControl>
@@ -189,4 +173,4 @@ const AdmissionForm = () => {
         </>
     );
 }
-export default AdmissionForm;
+export default SubjectAdd;

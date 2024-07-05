@@ -5,13 +5,13 @@ import SubmitButton from './SubmitButton';
 import { useNavigate } from 'react-router-dom';
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'first_name', headerName: 'First name', width: 130 },
-    { field: 'last_name', headerName: 'Last name', width: 130 },
+    { field: 'id', headerName: 'ID',  width: 200},
+    { field: 'first_name', headerName: 'First name', width: 150 },
+    { field: 'last_name', headerName: 'Last name', width: 150 },
     {
         field: 'email',
         headerName: 'Email',
-        width: 160,
+        width: 200,
     },
 ];
 function TeacherTable({  teachers }) {
@@ -25,7 +25,8 @@ function TeacherTable({  teachers }) {
                     text={'Add'}
                     type={'submit'}
                     style={{
-                        width: '120px',
+                        width: '80px',
+                        mr:'20px',
                         height: '40px',
                         border: '1px solid #FAFAFA',
                         borderRadius: '10px',

@@ -7,7 +7,7 @@ const theme = createTheme({
       main: '#008000',
     },
     secondary: {
-      main: '#e6ffe6',
+      main: '#008000',
     },
     info: {
       main: '##888888 ',
@@ -19,7 +19,7 @@ const theme = createTheme({
       main: '#ffffff',
     },
     text: {
-      primary: '#FEBD17',
+      primary: '#000000',
       secondary: '#008000',
     },
   },
@@ -39,7 +39,7 @@ const theme = createTheme({
       fontWeight: 700,
     },
     h2: {
-      fontSize: { md: '26px', lg: '30px', xl: '28px' },
+      fontSize: { md: '28px', lg: '30px', xl: '30px' },
       fontWeight: 500,
       textDecoration: 'underLine',
       color: '#404040',
@@ -47,11 +47,11 @@ const theme = createTheme({
       textAlign: 'center'
     },
     h3: {
-      fontSize: '20px',
+      fontSize: '30px',
       fontWeight: 600,
     },
     h4: {
-      fontSize: '18px',
+      fontSize: '15px',
       fontWeight: 700,
     },
     h5: {
@@ -72,12 +72,12 @@ const theme = createTheme({
     },
     link: {
       textDecoration: 'none',
-      color: '#FEBD17',
+      color: '#008000',
       '&:hover': {
         color: '#404040',
       },
       '&:active': {
-        color: '#FEBD17',
+        color: '#008000',
       },
     },
   },
@@ -91,7 +91,7 @@ const theme = createTheme({
         {
           props: { variant: 'primary' },
           style: {
-            backgroundColor: '#FEBD17',
+            backgroundColor: '#008000 ',
             color: '#404040',
             borderRadius: '5px',
             position: 'relative',
@@ -134,7 +134,7 @@ const theme = createTheme({
             boxShadow: '0px 0px 4px 0px #00000040',
             backgroundColor: '#fff',
             height: '40px',
-            color: '#888888',
+            color: '#008000',
             '&:hover': {
               border: '1px solid #E4E4E4',
               boxShadow: '0px 0px 4px 0px #00000040',
@@ -153,10 +153,10 @@ const theme = createTheme({
     MuiIconButton: {
       styleOverrides: {
         root: {
-          color: '#FEBD17',
+          color: '#008000',
           '&:hover': {
             backgroundColor: '#404040',
-            color: '#FEBD17',
+            color: '#008000',
           },
         },
       },

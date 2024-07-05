@@ -5,29 +5,32 @@ import SubmitButton from './SubmitButton';
 import { useNavigate } from 'react-router-dom';
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 200 },
-    { field: 'first_name', headerName: 'First name', width: 150 },
-    { field: 'last_name', headerName: 'Last name', width: 150 },
+    { field: 'id', headerName: 'ID',  width: 240},
+    { field: 'first_name', headerName: 'First Name', width: 150 },
+    { field: 'last_name', headerName: 'Last Name', width: 150 },
+    { field: 'father_name', headerName: 'Father Name', width: 150 },
+    { field: 'email', headerName: 'Email', width: 150 },
+    { field: 'class', headerName: 'Class', width: 150 },
     {
-        field: 'email',
-        headerName: 'Email',
-        width: 200,
+        field: 'group',
+        headerName: 'Group',
+        width:200,
     },
 ];
-function StudentTable({ students }) {
+function AdmissionList({classList}) {
     const navigate = useNavigate()
     return (
         <Box sx={{ height: 400, width: '100%' }}>
-            <Typography variant='h3' sx={{ mb: 3, textAlign: 'center' }}>Student List</Typography>
+            <Typography variant='h1' sx={{ mb: 3, textAlign: 'center' }}>Class Admission List</Typography>
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end', pb: 2 }}>
                 <SubmitButton
-                    onClick={() => navigate('/students/student-add')}
+                    onClick={() => navigate('/admission/admission')}
                     text={'Add'}
                     type={'submit'}
                     style={{
                         width: '80px',
-                        height: '40px',
                         mr:'20px',
+                        height: '40px',
                         border: '1px solid #FAFAFA',
                         borderRadius: '10px',
                         fontSize: '16px',
@@ -40,18 +43,12 @@ function StudentTable({ students }) {
                     }}
                 />
             </Box>
-            <DataGrid
-                rows={students}
-                columns={columns}
-                initialState={{
-                    pagination: {
-                        paginationModel: { page: 0, pageSize: 10 },
-                    },
-                }}
-                pageSizeOptions={[5, 10]}
-                checkboxSelection
-            />
+            <Box component="ol">
+        {classList.map((student, index) => (
+          <Typography variant='p' sx={{paddingBottom:'6px'}} component={'li'} key={index}>{student.first_name}{student.last_name}- {student.email} </Typography>
+        ))}
+      </Box>
         </Box >
     );
 }
-export default StudentTable
+export default AdmissionList;
