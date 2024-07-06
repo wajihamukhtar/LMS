@@ -136,7 +136,13 @@ export const Auth_Data = {
     { id: 19, paperName: "Class 10 - Geography", date: "2024-09-02", startTime: "01:00 PM", endTime: "04:00 PM" },
     { id: 20, paperName: "Class 10 - Physics", date: "2024-09-03", startTime: "02:00 PM", endTime: "05:00 PM" },
   ],
-
+ paymentMethods : [
+    { label: 'Credit Card', value: 'credit_card' },
+    { label: 'Debit Card', value: 'debit_card' },
+    { label: 'Net Banking', value: 'net_banking' },
+    { label: 'UPI', value: 'upi' },
+  ],
+  
   sidebarLinks: [
     {
       icon: <MailIcon />,
@@ -192,21 +198,21 @@ export const Auth_Data = {
         },
       ],
     },
-    // {
-    //   icon: <MailIcon />,
-    //   text: 'Syllabus',
-    //   link: '#',
-    //   sublinks: [
-    //     {
-    //       text: 'TeachersRegistration',
-    //       link: '/employee/dashboard/attendance/time-sheet',
-    //     },
-    //     {
-    //       text: 'Teachers List',
-    //       link: '/employee/dashboard/attendance/punch-requests',
-    //     },
-    //   ],
-    // },
+    {
+      icon: <MailIcon />,
+      text: 'Syllabus',
+      link: '#',
+      sublinks: [
+        {
+          text: 'SyllabusForm',
+          link: '/syllabus/syllabus_form',
+        },
+        {
+          text: 'SyllabusList',
+          link: '/syllabus/syllabus-list',
+        },
+      ],
+    },
     {
       icon: <MailIcon />,
       text: 'School',

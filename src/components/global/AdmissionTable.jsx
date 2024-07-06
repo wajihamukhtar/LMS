@@ -45,7 +45,7 @@ function AdmissionList({classList}) {
             </Box>
             <Box component="ol">
         {classList.map((student, index) => (
-          <Typography variant='p' sx={{paddingBottom:'6px'}} component={'li'} key={index}>{student.first_name}{student.last_name}- {student.email} </Typography>
+          <Typography variant='p' sx={{paddingBottom:'6px'}} component={'li'} key={index}>{student.first_name}{student.last_name}- {student.email}-{student.date_of_birth} </Typography>
         ))}
       </Box>
         </Box >

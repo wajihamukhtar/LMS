@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.d5e92365.css",
-    "main.js": "/static/js/main.a124aff7.js",
+    "main.js": "/static/js/main.d5af9d13.js",
     "static/media/Seminar-pana.png": "/static/media/Seminar-pana.e655518b6d7dd7e8bdf3.png",
     "static/media/jplogo.jpg": "/static/media/jplogo.de47c5a316ceff8d5569.jpg",
     "index.html": "/index.html",
     "main.d5e92365.css.map": "/static/css/main.d5e92365.css.map",
-    "main.a124aff7.js.map": "/static/js/main.a124aff7.js.map"
+    "main.d5af9d13.js.map": "/static/js/main.d5af9d13.js.map"
   },
   "entrypoints": [
     "static/css/main.d5e92365.css",
-    "static/js/main.a124aff7.js"
+    "static/js/main.d5af9d13.js"
   ]
 }

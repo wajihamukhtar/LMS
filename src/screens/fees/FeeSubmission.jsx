@@ -1,18 +1,13 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Box, Typography, TextField, Button, MenuItem } from '@mui/material';
-
-const paymentMethods = [
-  { label: 'Credit Card', value: 'credit_card' },
-  { label: 'Debit Card', value: 'debit_card' },
-  { label: 'Net Banking', value: 'net_banking' },
-  { label: 'UPI', value: 'upi' },
-];
+import { Auth_Data } from '../../constants/auth_constant';
 
 const FeesSubmission = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const fee = location.state?.fee || {};
+  const data=Auth_Data?.paymentMethods||[];
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -62,7 +57,7 @@ const FeesSubmission = () => {
           required
           sx={{ marginBottom: 2 }}
         >
-          {paymentMethods.map((method) => (
+          {data.map((method) => (
             <MenuItem key={method.value} value={method.value}>
               {method.label}
             </MenuItem>

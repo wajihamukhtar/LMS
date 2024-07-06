@@ -23,6 +23,8 @@ import FeesVoucher from '../screens/fees/FeeVoucher';
 import FeesSubmission from '../screens/fees/FeeSubmission';
 import ExamSchedule from '../screens/exam/ExamSchedule';
 import ResultScreen from '../screens/exam/ExamResult';
+import SyllabusList from '../screens/syllabus/SyllabusForm';
+import SyllabusForm from '../screens/syllabus/SyllabusForm';
 
 
 export const routes = {
@@ -51,6 +53,9 @@ export const routes = {
 
   exam_schedule:'/exam/exam-schedule',
   exam_result:'/exam/exam-result',
+
+  syllabus_form:'/syllabus/syllabus_form',
+  syllabus_list:'/syllabus/syllabus-list',
   error: '*',
 };
 
@@ -148,6 +153,14 @@ export const privateRoutes = [
       {
         path: routes.exam_result,
         element: <ResultScreen/>,
+      },
+      {
+        path: routes.syllabus_form,
+        element: <SyllabusForm/>,
+      },
+      {
+        path: routes.syllabus_list,
+        element: <SyllabusList/>,
       },
     ],
   },

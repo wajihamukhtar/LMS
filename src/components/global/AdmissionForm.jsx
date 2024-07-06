@@ -6,25 +6,28 @@ import { useNavigate } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
 import theme from '../../theme';
 import { getDatabase, ref, push, set } from "firebase/database";
+import DatePic from './DatePic';
+
 
 const AdmissionForm = () => {
-    const { text, button_text, fields, redio } = Auth_Data?.admission|| {};
+    const { text, button_text, fields, redio } = Auth_Data?.admission || {};
     const [disbled, setDisabled] = useState(true);
     const navigate = useNavigate()
+    const [selectedDate, setSelectedDate] = useState(null);
     const [userData, setUserData] = useState({
         first_name: '',
         last_name: '',
         qualification: '',
-        date_of_birth:'',
-        father_name:'',
-        email:'',
-        phonenum:'',
+        date_of_birth: '',
+        father_name: '',
+        email: '',
+        phonenum: '',
         gender: '',
     });
     const handleChange = (event) => {
         setUserData({
             ...userData,
-            gender: event.target.value
+            gender: event.target.value,
         });
     };
 
@@ -35,6 +38,15 @@ const AdmissionForm = () => {
         });
     };
 
+    const handleDateChange = (newValue) => {
+        setSelectedDate(newValue);
+        setUserData({
+            ...userData,
+            date_of_birth: selectedDate?.format('YYYY-MM-DD')
+        })
+    };
+
+    console.log(userData, 'user')
     useEffect(() => {
         if (
             userData?.first_name &&
@@ -43,6 +55,7 @@ const AdmissionForm = () => {
             userData?.email &&
             userData?.qualification &&
             userData?.phonenum &&
+            userData?.date_of_birth &&
             userData?.gender
         ) {
             return setDisabled(false);
@@ -59,20 +72,21 @@ const AdmissionForm = () => {
             await set(admissionRef, {
                 first_name: userData?.first_name,
                 last_name: userData?.last_name,
-                father_name:userData?.father_name,
+                father_name: userData?.father_name,
                 email: userData?.email,
                 qualification: userData?.qualification,
                 phonenum: userData?.phonenum,
+                date_of_birth: userData?.date_of_birth,
                 gender: userData?.gender
             });
             console.log("Data successfully submitted to Firebase");
             setUserData({
                 first_name: '',
                 last_name: '',
-                father_name:'',
+                father_name: '',
                 email: '',
                 qualification: '',
-                phonenum:'',
+                phonenum: '',
                 gender: null
             });
             navigate('/class/class-list')
@@ -115,25 +129,28 @@ const AdmissionForm = () => {
                     }}
                 >
                     {fields?.map(({ name, type, label, place_holder }) => (
-                        <InputField
-                            key={name}
-                            type={type}
-                            label={label}
-                            placeholder={place_holder}
-                            onChange={handleInputChange}
-                            name={name}
-                            value={userData[name]}
-                            style={{
-                                fontSize: '13px',
-                                fontWeight: 400,
-                                color: '#888888',
-                                border: '2px solid #E4E4E4',
-                                height: '40px',
-                                backgroundColor: "#fff"
-                            }}
-                        />
+                        <>
+                            {name === 'date_of_birth' ? (<DatePic label={label} value={selectedDate} onChange={handleDateChange} />) : (
+                                <InputField
+                                    key={name}
+                                    type={type}
+                                    label={label}
+                                    placeholder={place_holder}
+                                    onChange={handleInputChange}
+                                    name={name}
+                                    value={userData[name]}
+                                    style={{
+                                        fontSize: '13px',
+                                        fontWeight: 400,
+                                        color: '#888888',
+                                        border: '2px solid #E4E4E4',
+                                        height: '40px',
+                                        backgroundColor: "#fff"
+                                    }}
+                                />
+                            )}
+                        </>
                     ))}
-
                 </Box>
                 <Box
                     sx={{
