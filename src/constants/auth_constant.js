@@ -198,21 +198,21 @@ export const Auth_Data = {
         },
       ],
     },
-    {
-      icon: <MailIcon />,
-      text: 'Syllabus',
-      link: '#',
-      sublinks: [
-        {
-          text: 'SyllabusForm',
-          link: '/syllabus/syllabus_form',
-        },
-        {
-          text: 'SyllabusList',
-          link: '/syllabus/syllabus-list',
-        },
-      ],
-    },
+    // {
+    //   icon: <MailIcon />,
+    //   text: 'Syllabus',
+    //   link: '#',
+    //   sublinks: [
+    //     {
+    //       text: 'SyllabusForm',
+    //       link: '/syllabus/syllabus_form',
+    //     },
+    //     {
+    //       text: 'SyllabusList',
+    //       link: '/syllabus/syllabus-list',
+    //     },
+    //   ],
+    // },
     {
       icon: <MailIcon />,
       text: 'School',
