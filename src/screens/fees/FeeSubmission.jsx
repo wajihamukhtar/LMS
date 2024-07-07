@@ -11,15 +11,8 @@ const FeesSubmission = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission logic here
     console.log('Form submitted');
   };
-
-  if (!location.state) {
-    navigate('/'); // Redirect to home if no state is present
-    
-  }
-
   return (
     <Box sx={{ padding: 4, maxWidth: 600, margin: '0 auto', backgroundColor: '#fff', borderRadius: 2, boxShadow: 1 }}>
       <Typography variant="h2" component="h1" sx={{ marginBottom: 4 }}>
@@ -63,7 +56,7 @@ const FeesSubmission = () => {
             </MenuItem>
           ))}
         </TextField>
-        <Button type="submit" variant="contained" color="primary" fullWidth>
+        <Button  type="submit" variant="contained" color="primary" fullWidth>
           Submit Payment
         </Button>
       </form>

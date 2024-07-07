@@ -14,13 +14,13 @@ const SidebarAccordion = ({ sidebarLinks }) => {
         setExpanded(isExpanded ? panel : false);
     };
     return (
-        <div>
+        <Box sx={{ width: '100%', height: '100%' }}>
             {sidebarLinks?.map((item, index) => (
-                <div key={index}>
-                    <Box >
+                <Box key={index} sx={{ width: '100%', height: 'auto' }}>
+                    <Box sx={{ width: '100%', height: '100%' }}>
                         <Accordion
                             expanded={
-                                item.sublinks == null ? null : expanded === `panel${index + 1}`
+                                item?.sublinks == null ? null : expanded === `panel${index + 1}`
                             }
                             onChange={handleChange(`panel${index + 1}`)}
                             sx={{
@@ -55,9 +55,9 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                                         }`,
                                 }}
                             >
-                                <Link  href={`${item?.link}`}>
+                                <Link href={`${item?.link}`}>
                                     {item?.icon && (
-                                        <Box sx={{color:'#194d33' ,paddingTop:'2px'}}>
+                                        <Box sx={{ color: '#194d33', paddingTop: '2px' }}>
                                             {item?.icon}
                                         </Box>
                                     )}
@@ -139,9 +139,9 @@ const SidebarAccordion = ({ sidebarLinks }) => {
                                 ))}
                         </Accordion>
                     </Box>
-                </div>
+                </Box>
             ))}
-        </div>
+        </Box>
     );
 };
 

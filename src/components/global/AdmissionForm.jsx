@@ -8,7 +8,6 @@ import theme from '../../theme';
 import { getDatabase, ref, push, set } from "firebase/database";
 import DatePic from './DatePic';
 
-
 const AdmissionForm = () => {
     const { text, button_text, fields, redio } = Auth_Data?.admission || {};
     const [disbled, setDisabled] = useState(true);
@@ -19,7 +18,6 @@ const AdmissionForm = () => {
         last_name: '',
         qualification: '',
         date_of_birth: '',
-        father_name: '',
         email: '',
         phonenum: '',
         gender: '',
@@ -46,12 +44,10 @@ const AdmissionForm = () => {
         })
     };
 
-    console.log(userData, 'user')
     useEffect(() => {
         if (
             userData?.first_name &&
             userData?.last_name &&
-            userData?.father_name &&
             userData?.email &&
             userData?.qualification &&
             userData?.phonenum &&
@@ -72,22 +68,22 @@ const AdmissionForm = () => {
             await set(admissionRef, {
                 first_name: userData?.first_name,
                 last_name: userData?.last_name,
-                father_name: userData?.father_name,
                 email: userData?.email,
                 qualification: userData?.qualification,
                 phonenum: userData?.phonenum,
-                date_of_birth: userData?.date_of_birth,
                 gender: userData?.gender
             });
+            console.log(userData, 'classlist')
+
             console.log("Data successfully submitted to Firebase");
             setUserData({
                 first_name: '',
                 last_name: '',
-                father_name: '',
                 email: '',
                 qualification: '',
                 phonenum: '',
-                gender: null
+                gender: null,
+                date_of_birth: '',
             });
             navigate('/class/class-list')
 

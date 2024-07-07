@@ -20,7 +20,7 @@ const LayoutBodyRoot = styled('div')(({ theme }) => ({
   flex: '1 1 auto',
   maxWidth: '100%',
   overflowX: 'hidden',
-  margin:'auto',
+  margin: 'auto',
   [theme.breakpoints.up('md')]: {
     paddingLeft: 270,
   },

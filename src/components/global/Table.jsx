@@ -1,48 +1,62 @@
-import * as React from 'react';
+import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Box, Typography } from '@mui/material';
-import SubmitButton from './SubmitButton';
-import { useNavigate } from 'react-router-dom';
+import { Box, Typography, Button } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
-const columns = [
-    { field: 'id', headerName: 'ID', width: 200 },
-    { field: 'first_name', headerName: 'First name', width: 150 },
-    { field: 'last_name', headerName: 'Last name', width: 150 },
-    {
-        field: 'email',
-        headerName: 'Email',
-        width: 200,
-    },
-];
-function StudentTable({ students }) {
-    const navigate = useNavigate()
+const DownloadButton = ({ text, onClick }) => (
+    <Button
+        onClick={onClick}
+        variant="contained"
+        color="primary"
+        style={{
+            width: '100%',
+            height: '40px',
+            borderRadius: '10px',
+            fontSize: '16px',
+            fontWeight: 500,
+        }}
+    >
+        {text}
+    </Button>
+);
+
+function Table({ columns, rows, heading, SubmitButton }) {
+    const { pathname } = useLocation()
+
+    const handleDownload = (params) => {
+        const fileData = params.row.docBase64;
+        if (fileData) {
+            const link = document.createElement('a');
+            link.href = fileData;
+            link.download = 'syllabus.pdf';
+            link.click();
+        } else {
+            console.log('No file data available');
+        }
+    };
+
+    const renderDownloadButton = (params) => (
+        params.row.docBase64 ? <DownloadButton text="Download PDF" onClick={() => handleDownload(params)} /> : null
+    );
+
+    const updatedColumns = [
+        ...columns,
+        {
+            field: 'download',
+            headerName: 'Download',
+            width: 150,
+            renderCell: renderDownloadButton,
+        },
+    ];
     return (
         <Box sx={{ height: 400, width: '100%' }}>
-            <Typography variant='h3' sx={{ mb: 3, textAlign: 'center' }}>Student List</Typography>
+            <Typography variant='h3' sx={{ mb: 3, textAlign: 'center' }}>{heading}</Typography>
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end', pb: 2 }}>
-                <SubmitButton
-                    onClick={() => navigate('/students/student-add')}
-                    text={'Add'}
-                    type={'submit'}
-                    style={{
-                        width: '80px',
-                        height: '40px',
-                        mr:'20px',
-                        border: '1px solid #FAFAFA',
-                        borderRadius: '10px',
-                        fontSize: '16px',
-                        fontWeight: 500,
-                        color: '#fff !important',
-                        backgroundColor: '#008000',
-                        '&:hover': {
-                            backgroundColor: '#008000'
-                        }
-                    }}
-                />
+                {SubmitButton}
             </Box>
             <DataGrid
-                rows={students}
-                columns={columns}
+                rows={rows}
+                columns={pathname?.includes('/syllabus/syllabus-list') ? updatedColumns : columns}
                 initialState={{
                     pagination: {
                         paginationModel: { page: 0, pageSize: 10 },
@@ -51,7 +65,8 @@ function StudentTable({ students }) {
                 pageSizeOptions={[5, 10]}
                 checkboxSelection
             />
-        </Box >
+        </Box>
     );
 }
-export default StudentTable
+
+export default Table;

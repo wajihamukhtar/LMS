@@ -57,10 +57,10 @@ export const Auth_Data = {
       { name: 'email', type: 'email', label: 'Email:', place_holder: 'Enter your email' },
 
       {
-        name: 'qualification',
-        type: 'text',
-        label: 'Qualification:',
-        place_holder: 'Enter your qualification',
+        name: 'class',
+        type: 'number',
+        label: 'Class:',
+        place_holder: 'Enter your classname',
       },
     ],
   },
@@ -70,7 +70,15 @@ export const Auth_Data = {
     redio_text: 'Select Group',
     button_text: 'ADD',
     fields: [
-      { name: 'subject_name', type: 'text', label: 'SubjectName:', place_holder: 'Enter your subjectname' },
+      { name: 'subject_name', type: 'text', label: 'Subject Name:', place_holder: 'Enter your subjectname' },
+      { name: 'class', type: 'number', label: 'Class:', place_holder: 'Enter your class' },
+    ],
+  },
+  syllabustAdd: {
+    text: 'Syllabus Add',
+    button_text: 'ADD',
+    fields: [
+      { name: 'subject_name', type: 'text', label: 'Subject Name:', place_holder: 'Enter your subjectname' },
       { name: 'class', type: 'number', label: 'Class:', place_holder: 'Enter your class' },
     ],
   },
@@ -82,7 +90,6 @@ export const Auth_Data = {
     fields: [
       { name: 'first_name', type: 'text', label: 'FirstName:', place_holder: 'Enter your firstname' },
       { name: 'last_name', type: 'text', label: 'LastName:', place_holder: 'Enter your lastname' },
-      { name: 'father_name', type: 'text', label: 'FatherName:', place_holder: 'Enter your fathername' },
       { name: 'email', type: 'email', label: 'Email:', place_holder: 'Enter your email' },
       { name: 'phonenum', type: 'number', label: 'PhoneNumber:', place_holder: 'Enter your phone number' },
       { name: 'date_of_birth', type: 'number', label: 'Date Of Birth:', place_holder: 'Enter your date of birth' },
@@ -94,6 +101,54 @@ export const Auth_Data = {
       },
     ],
   },
+  Studentcolumns: [
+    { field: 'id', headerName: 'ID', width: 200 },
+    { field: 'first_name', headerName: 'First name', width: 150 },
+    { field: 'last_name', headerName: 'Last name', width: 150 },
+    {
+      field: 'email',
+      headerName: 'Email',
+      width: 200,
+    },
+  ],
+  Teachercolumns: [
+    { field: 'id', headerName: 'ID', width: 200 },
+    { field: 'first_name', headerName: 'First name', width: 150 },
+    { field: 'last_name', headerName: 'Last name', width: 150 },
+    {
+      field: 'email',
+      headerName: 'Email',
+      width: 200,
+    },
+  ],
+  Subjectcolumns: [
+    { field: 'id', headerName: 'ID', width: 200 },
+    { field: 'subject_name', headerName: 'Subject Name', width: 150 },
+    { field: 'class', headerName: 'Class', width: 150 },
+    {
+      field: 'group',
+      headerName: 'Group',
+      width: 200,
+    },
+  ],
+  Syllabuscolumns: [
+    { field: 'id', headerName: 'ID', width: 200 },
+    { field: 'subject_name', headerName: 'Subject Name', width: 150 },
+    { field: 'class', headerName: 'Class', width: 150 },
+  ],
+  Classcolumns: [
+    { field: 'id', headerName: 'ID', width: 240 },
+    { field: 'first_name', headerName: 'First Name', width: 150 },
+    { field: 'last_name', headerName: 'Last Name', width: 150 },
+    { field: 'father_name', headerName: 'Father Name', width: 150 },
+    { field: 'email', headerName: 'Email', width: 150 },
+    { field: 'class', headerName: 'Class', width: 150 },
+    {
+      field: 'group',
+      headerName: 'Group',
+      width: 200,
+    },
+  ],
   navbar: {
     text: 'LOGIN',
     checkbox_text: 'Remember me',
@@ -101,7 +156,7 @@ export const Auth_Data = {
     button_text: 'Login',
     link: { text: 'Sign up', href: '/signup' },
   },
- mockFeesData : [
+  mockFeesData: [
     { className: "Class 1", monthlyFees: 500, yearlyFees: 6000 },
     { className: "Class 2", monthlyFees: 600, yearlyFees: 7200 },
     { className: "Class 3", monthlyFees: 700, yearlyFees: 8400 },
@@ -136,13 +191,13 @@ export const Auth_Data = {
     { id: 19, paperName: "Class 10 - Geography", date: "2024-09-02", startTime: "01:00 PM", endTime: "04:00 PM" },
     { id: 20, paperName: "Class 10 - Physics", date: "2024-09-03", startTime: "02:00 PM", endTime: "05:00 PM" },
   ],
- paymentMethods : [
+  paymentMethods: [
     { label: 'Credit Card', value: 'credit_card' },
     { label: 'Debit Card', value: 'debit_card' },
     { label: 'Net Banking', value: 'net_banking' },
     { label: 'UPI', value: 'upi' },
   ],
-  
+
   sidebarLinks: [
     {
       icon: <MailIcon />,
@@ -189,7 +244,7 @@ export const Auth_Data = {
       link: '#',
       sublinks: [
         {
-          text: 'SubjectsAdd',
+          text: 'Subjects Add',
           link: '/subjects/subject-add',
         },
         {
@@ -198,32 +253,32 @@ export const Auth_Data = {
         },
       ],
     },
-    // {
-    //   icon: <MailIcon />,
-    //   text: 'Syllabus',
-    //   link: '#',
-    //   sublinks: [
-    //     {
-    //       text: 'SyllabusForm',
-    //       link: '/syllabus/syllabus_form',
-    //     },
-    //     {
-    //       text: 'SyllabusList',
-    //       link: '/syllabus/syllabus-list',
-    //     },
-    //   ],
-    // },
+    {
+      icon: <MailIcon />,
+      text: 'Syllabus',
+      link: '#',
+      sublinks: [
+        {
+          text: 'Syllabus Form',
+          link: '/syllabus/syllabus_form',
+        },
+        {
+          text: 'Syllabus List',
+          link: '/syllabus/syllabus-list',
+        },
+      ],
+    },
     {
       icon: <MailIcon />,
       text: 'School',
       link: '#',
       sublinks: [
         {
-          text: 'StudentRegistration',
+          text: 'Student Registration',
           link: '/students/student-add',
         },
         {
-          text: 'TeacherRegistration',
+          text: 'Teacher Registration',
           link: '/teachers/teacher-add',
         },
       ],
@@ -252,7 +307,7 @@ export const Auth_Data = {
           text: 'Fee Structure',
           link: '/fees/fee-structure',
         },
-       
+
         {
           text: 'Fee Voucher',
           link: '/fees/fee-voucher',

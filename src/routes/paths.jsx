@@ -12,6 +12,7 @@ import StudentList from '../screens/students/StudentList';
 import TransferStudent from '../screens/students/TransferStudent';
 import SubjectList from '../screens/subjects/SubjectList';
 import Subjects from '../screens/subjects';
+import Syllabus from '../screens/syllabus';
 import Teachers from '../screens/teachers';
 import TeacherAllocation from '../screens/teachers/TeacherAllocation';
 import TeacherList from '../screens/teachers/TeacherList';
@@ -23,6 +24,7 @@ import FeesVoucher from '../screens/fees/FeeVoucher';
 import FeesSubmission from '../screens/fees/FeeSubmission';
 import ExamSchedule from '../screens/exam/ExamSchedule';
 import ResultScreen from '../screens/exam/ExamResult';
+import SyllabusList from '../screens/syllabus/SyllabusList';
 
 
 
@@ -40,18 +42,21 @@ export const routes = {
   subjects: '/subjects/subject-add',
   subjects_list: '/subjects/subjects-list',
 
-  adimission:'/admission/admission',
+  syllabus: '/syllabus/syllabus_form',
+  syllabus_list: '/syllabus/syllabus-list',
 
-  class:'/class/class-form',
-  class_list:'/class/class-list',
+  adimission: '/admission/admission',
 
-  fee:'/class/class-form',
-  fees_structure:'/fees/fee-structure',
-  fees_voucher:'/fees/fee-voucher',
-  fees_submission:'/fees/fee-submission',
+  class: '/class/class-form',
+  class_list: '/class/class-list',
 
-  exam_schedule:'/exam/exam-schedule',
-  exam_result:'/exam/exam-result',
+  fee: '/class/class-form',
+  fees_structure: '/fees/fee-structure',
+  fees_voucher: '/fees/fee-voucher',
+  fees_submission: '/fees/fee-submission',
+
+  exam_schedule: '/exam/exam-schedule',
+  exam_result: '/exam/exam-result',
 
   error: '*',
 };
@@ -119,6 +124,14 @@ export const privateRoutes = [
         element: <SubjectList />,
       },
       {
+        path: routes.syllabus,
+        element: <Syllabus />,
+      },
+      {
+        path: routes.syllabus_list,
+        element: <SyllabusList />,
+      },
+      {
         path: routes.adimission,
         element: <Admission />,
       },
@@ -130,7 +143,7 @@ export const privateRoutes = [
         path: routes.class_list,
         element: <ClassList />,
       },
-     
+
       {
         path: routes.fees_structure,
         element: <FeesStructure />,
@@ -145,13 +158,13 @@ export const privateRoutes = [
       },
       {
         path: routes.exam_schedule,
-        element: <ExamSchedule/>,
+        element: <ExamSchedule />,
       },
       {
         path: routes.exam_result,
-        element: <ResultScreen/>,
+        element: <ResultScreen />,
       },
-      
+
     ],
   },
 ];

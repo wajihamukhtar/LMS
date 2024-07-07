@@ -4,20 +4,8 @@ import { Box, Typography } from '@mui/material';
 import SubmitButton from './SubmitButton';
 import { useNavigate } from 'react-router-dom';
 
-const columns = [
-    { field: 'id', headerName: 'ID',  width: 240},
-    { field: 'first_name', headerName: 'First Name', width: 150 },
-    { field: 'last_name', headerName: 'Last Name', width: 150 },
-    { field: 'father_name', headerName: 'Father Name', width: 150 },
-    { field: 'email', headerName: 'Email', width: 150 },
-    { field: 'class', headerName: 'Class', width: 150 },
-    {
-        field: 'group',
-        headerName: 'Group',
-        width:200,
-    },
-];
-function AdmissionList({classList}) {
+
+function AdmissionList({ classList }) {
     const navigate = useNavigate()
     return (
         <Box sx={{ height: 400, width: '100%' }}>
@@ -29,7 +17,7 @@ function AdmissionList({classList}) {
                     type={'submit'}
                     style={{
                         width: '80px',
-                        mr:'20px',
+                        mr: '20px',
                         height: '40px',
                         border: '1px solid #FAFAFA',
                         borderRadius: '10px',
@@ -43,11 +31,7 @@ function AdmissionList({classList}) {
                     }}
                 />
             </Box>
-            <Box component="ol">
-        {classList.map((student, index) => (
-          <Typography variant='p' sx={{paddingBottom:'6px'}} component={'li'} key={index}>{student.first_name}{student.last_name}- {student.email}-{student.date_of_birth} </Typography>
-        ))}
-      </Box>
+
         </Box >
     );
 }

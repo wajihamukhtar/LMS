@@ -15,7 +15,7 @@ const RegistrationForm = () => {
         first_name: '',
         last_name: '',
         email: '',
-        qualification: '',
+        class:'',
         gender: ''
     });
 
@@ -38,6 +38,7 @@ const RegistrationForm = () => {
             userData?.first_name &&
             userData?.last_name &&
             userData?.email &&
+            userData?.class &&
             userData?.password
         ) {
             return setDisabled(false);
@@ -55,7 +56,7 @@ const RegistrationForm = () => {
                 first_name: userData.first_name,
                 last_name: userData.last_name,
                 email: userData.email,
-                qualification: userData.qualification,
+                class:userData.class,
                 gender: userData.gender
             });
             console.log("Data successfully submitted to Firebase");
@@ -63,7 +64,7 @@ const RegistrationForm = () => {
                 first_name: '',
                 last_name: '',
                 email: '',
-                qualification: '',
+                class:'',
                 gender: null
             });
             navigate('/students/student-list')
