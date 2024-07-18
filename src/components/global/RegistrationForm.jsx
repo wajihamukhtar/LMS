@@ -18,7 +18,6 @@ const RegistrationForm = () => {
         class:'',
         gender: ''
     });
-
     const handleChange = (event) => {
         setUserData({
             ...userData,

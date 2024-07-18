@@ -1,11 +1,19 @@
-import MailIcon from '@mui/icons-material/Mail';
+import PersonIcon from '@mui/icons-material/Person';
+import SchoolIcon from '@mui/icons-material/School';
+import CastForEducationIcon from '@mui/icons-material/CastForEducation';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import ClassIcon from '@mui/icons-material/Class';
+import SubjectIcon from '@mui/icons-material/Subject';
+import PaymentIcon from '@mui/icons-material/Payment';
+import Person3Icon from '@mui/icons-material/Person3';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 export const Auth_Data = {
   login: {
     text: 'LOGIN',
     checkbox_text: 'Remember me',
     reset_link: { text: 'click here?', href: '#' },
     button_text: 'Login',
-    link: { text: 'Sign up', href: '/signup' },
+    link: { text: 'Sign up', href: '/signup',reset:'/resetpassword' },
     fields: [
       { type: 'email', label: 'Email:', place_holder: 'Enter your email' },
       {
@@ -149,13 +157,7 @@ export const Auth_Data = {
       width: 200,
     },
   ],
-  navbar: {
-    text: 'LOGIN',
-    checkbox_text: 'Remember me',
-    reset_link: { text: 'click here?', href: '#' },
-    button_text: 'Login',
-    link: { text: 'Sign up', href: '/signup' },
-  },
+ 
   mockFeesData: [
     { className: "Class 1", monthlyFees: 500, yearlyFees: 6000 },
     { className: "Class 2", monthlyFees: 600, yearlyFees: 7200 },
@@ -200,7 +202,7 @@ export const Auth_Data = {
 
   sidebarLinks: [
     {
-      icon: <MailIcon />,
+      icon: <PersonIcon/>,
       text: 'Students',
       link: '#',
       sublinks: [
@@ -220,7 +222,7 @@ export const Auth_Data = {
       ],
     },
     {
-      icon: <MailIcon />,
+      icon: <Person3Icon />,
       text: 'Teachers',
       link: '#',
       sublinks: [
@@ -239,7 +241,7 @@ export const Auth_Data = {
       ],
     },
     {
-      icon: <MailIcon />,
+      icon: <SubjectIcon />,
       text: 'Subjects',
       link: '#',
       sublinks: [
@@ -254,7 +256,7 @@ export const Auth_Data = {
       ],
     },
     {
-      icon: <MailIcon />,
+      icon: <AutoStoriesIcon/>,
       text: 'Syllabus',
       link: '#',
       sublinks: [
@@ -269,7 +271,7 @@ export const Auth_Data = {
       ],
     },
     {
-      icon: <MailIcon />,
+      icon: <SchoolIcon />,
       text: 'School',
       link: '#',
       sublinks: [
@@ -284,7 +286,7 @@ export const Auth_Data = {
       ],
     },
     {
-      icon: <MailIcon />,
+      icon: <ClassIcon />,
       text: 'Class',
       link: '#',
       sublinks: [
@@ -299,7 +301,7 @@ export const Auth_Data = {
       ],
     },
     {
-      icon: <MailIcon />,
+      icon: <PaymentIcon/>,
       text: 'Fees',
       link: '#',
       sublinks: [
@@ -319,7 +321,7 @@ export const Auth_Data = {
       ],
     },
     {
-      icon: <MailIcon />,
+      icon: <CastForEducationIcon />,
       text: 'Admission',
       link: '#',
       sublinks: [
@@ -330,7 +332,7 @@ export const Auth_Data = {
       ],
     },
     {
-      icon: <MailIcon />,
+      icon: <MenuBookIcon />,
       text: 'Exam',
       link: '#',
       sublinks: [

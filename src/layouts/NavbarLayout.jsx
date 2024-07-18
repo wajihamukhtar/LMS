@@ -5,7 +5,6 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
@@ -14,7 +13,7 @@ import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
 import { Auth_Data } from '../constants/auth_constant';
 import { useNavigate } from 'react-router-dom';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
-
+import { getAuth } from 'firebase/auth';
 const pages = ['About', 'Pricing', 'Blog'];
 const settings = ['Logout'];
 
@@ -38,13 +37,17 @@ export const NavbarLayout = ({ onNavOpen }) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/')
-    setAnchorElUser(null);
+    const auth=getAuth()
+    const user=auth.currentUser
+    if (user) {
+          navigate('/')
+          localStorage.removeItem('token');
+        }
+        else{
+          console.log('error')
+  }
   };
-
   return (
     <>
       <Box
@@ -64,8 +67,7 @@ export const NavbarLayout = ({ onNavOpen }) => {
         }}
       >
         <AppBar position="static" sx={{ px: 2 }}>
-          {/* <Container maxWidth="xl"> */}
-          <Toolbar disableGutters sx={{ height: '65px' }}>
+          <Toolbar disableGutters sx={{ height: '65px'}}>
             <SchoolRoundedIcon sx={{ mr: 1 }} />
             <Typography
               variant="h4"
@@ -86,7 +88,7 @@ export const NavbarLayout = ({ onNavOpen }) => {
             >
               Learning Managememnt System
             </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}>
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorElNav}
@@ -177,7 +179,6 @@ export const NavbarLayout = ({ onNavOpen }) => {
               <MenuOpenIcon />
             </IconButton>
           </Toolbar>
-          {/* </Container> */}
         </AppBar>
       </Box>
     </>

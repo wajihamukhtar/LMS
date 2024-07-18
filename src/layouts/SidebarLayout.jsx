@@ -40,7 +40,6 @@ export const SidebarLayout = (props) => {
             open={open}
             BackdropProps={{ click: false }}
             BackdropComponent={(props) => (
-
                 <Backdrop {...props} sx={{ backgroundColor: 'rgba(0, 0, 0, 0)' }} />
             )}
             PaperProps={{

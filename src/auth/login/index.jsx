@@ -5,9 +5,7 @@ import SubmitButton from '../../components/global/SubmitButton';
 import { Link, useNavigate } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
 import theme from '../../theme';
-
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { app } from '../firebaseConfig';
+import { signIn } from '../firebaseMethods';
 
 const Login = () => {
   const { text, checkbox_text, reset_link, button_text, fields, link } =
@@ -34,27 +32,21 @@ const Login = () => {
       remember_me: event.target.checked,
     });
   };
-  const auth = getAuth(app)
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUserData({ email: '', password: '' });
-    setRememberMe(false);
-    signInWithEmailAndPassword(auth, userData.email, userData.password)
-      .then((res) => {
-        const user = res.user;
+    setRememberMe(false)
+    signIn(userData.email, userData.password)
+      .then((user) => {
         if (user) {
           localStorage.setItem('token', JSON.stringify(user));
-          navigate('/students/student-list')
-        }
-        else {
-          navigate('/')
+          navigate('/students/student-list');
+        } else {
+          navigate('/');
         }
         console.log('User login account:', user);
       })
       .catch((error) => {
-        const errorMessage = error.message;
-        console.error('Error login user:', errorMessage);
+        console.error('Error login user:', error.message);
       });
   };
   return (
@@ -76,7 +68,7 @@ const Login = () => {
         }}
       >
         <Box>
-          <Typography
+          <Typography 
             sx={theme.typography.h5}
           >
             {text}
@@ -227,6 +219,18 @@ const Login = () => {
               }}
             >
               {link?.text}
+            </Typography>
+          </Link>
+          <Link to={link?.reset}>
+            <Typography
+              sx={{
+                fontSize: '16px',
+                fontWeight: 500,
+                color: '#008000',
+                textDecoration: 'underLine',
+              }}
+            >
+              reset password
             </Typography>
           </Link>
         </Box>

@@ -25,12 +25,16 @@ import FeesSubmission from '../screens/fees/FeeSubmission';
 import ExamSchedule from '../screens/exam/ExamSchedule';
 import ResultScreen from '../screens/exam/ExamResult';
 import SyllabusList from '../screens/syllabus/SyllabusList';
+import ResetPassword from '../auth/resetpassword';
+import SetNewPassword from '../auth/resetpassword/SetNewpassword';
 
 
 
 export const routes = {
   login: '/',
   signup: '/signup',
+  resetpassword:'/resetpassword',
+  setnewpassword:'/setnewpassword',
   students: '/students/student-add',
   students_list: '/students/student-list',
   transfer_student: '/students/transfer-student',
@@ -58,6 +62,7 @@ export const routes = {
   exam_schedule: '/exam/exam-schedule',
   exam_result: '/exam/exam-result',
 
+
   error: '*',
 };
 
@@ -73,6 +78,15 @@ export const publicRoutes = [
         path: routes.signup,
         element: <Signup />,
       },
+      {
+        path: routes.resetpassword,
+        element: <ResetPassword />,
+      },
+      {
+        path: routes.setnewpassword,
+        element: <SetNewPassword/>,
+      },
+
       {
         path: routes.navbar,
         element: <NavbarLayout />,

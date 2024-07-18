@@ -4,9 +4,9 @@ import { Button } from '@mui/material';
 const SubmitButton = ({
   text,
   style,
-  onClick,
   startIcon,
   endIcon,
+  onClick,
   variant,
   disabled,
   type,
