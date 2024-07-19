@@ -23,6 +23,19 @@ export const Auth_Data = {
       },
     ],
   },
+  reset: {
+    text: 'RESETPASSWORD',
+    button_text: 'Send Current Email',
+    link: { text: 'ResetPassword',href:'/resetpassword' },
+    fields: [
+      { type: 'email', label: 'Email:', place_holder: 'Enter your email' },
+      {
+        type: 'password',
+        label: 'Password:',
+        place_holder: 'Enter your password',
+      },
+    ],
+  },
   signup: {
     text: 'SIGN UP',
     button_text: 'Sign Up',

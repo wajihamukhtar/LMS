@@ -1,43 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 import InputField from '../../components/global/InputField';
-import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../../components/global/SubmitButton';
-import { sendPasswordResetEmail, getAuth } from 'firebase/auth';
-import { onAuthChange } from '../firebaseMethods';
+import {Resetpassword } from '../firebaseMethods';
+import { Auth_Data } from '../../constants/auth_constant';
 
 const ResetPassword = () => {
+  const { text, button_text} =
+  Auth_Data?.reset || {};
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const unsubscribe = onAuthChange((authUser) => {
-      setUser(authUser);
-      if (!authUser) {
-        navigate('/resetpassword');
-      }
-    });
-    return () => unsubscribe();
-  }, [navigate]);
-
-  const auth = getAuth();
-
   const handleResetPassword = async (e) => {
     e.preventDefault();
     try {
-      await sendPasswordResetEmail(auth, email);
+      await Resetpassword(email);
       setMessage('Password reset email sent. Please check your inbox.');
     } catch (err) {
       setError(err.message);
     }
   }
-
   return (
     <Box component="form" onSubmit={handleResetPassword} sx={{ maxWidth: 400, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 2 }}>
-      <Typography variant="h4" sx={{ textAlign: 'center', mb: 2 }}>Reset Password</Typography>
+      <Typography variant="h4" sx={{ textAlign: 'center', mb: 2 }}>{text}</Typography>
       {message && <Typography sx={{ color: 'green' }}>{message}</Typography>}
       {error && <Typography sx={{ color: 'red' }}>{error}</Typography>}
       <InputField
@@ -48,7 +33,7 @@ const ResetPassword = () => {
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Enter Email"
       />
-      <SubmitButton text={'Send Reset Email'}
+      <SubmitButton text={button_text}
         type={'submit'}
         style={{
           width: '100%',
@@ -67,7 +52,6 @@ const ResetPassword = () => {
     </Box>
   );
 };
-
 export default ResetPassword;
 
 
