@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@mui/material';
+import { IconButton } from '@mui/material';
 
 const SubmitButton = ({
   text,
@@ -13,7 +13,7 @@ const SubmitButton = ({
 }) => {
   return (
     text && (
-      <Button
+      <IconButton
         type={type}
         variant={variant}
         sx={style}
@@ -25,7 +25,7 @@ const SubmitButton = ({
         disableRipple
       >
         {text}
-      </Button>
+      </IconButton>
     )
   );
 };

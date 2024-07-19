@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword , getAuth,  signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
+import { createUserWithEmailAndPassword , getAuth,  signInWithEmailAndPassword, sendPasswordResetEmail, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { app } from "./firebaseConfig";
 const auth =getAuth(app)
 
@@ -20,4 +20,20 @@ export const signIn = async (email, password) => {
   };
 export const Resetpassword=(email)=>{
   return sendPasswordResetEmail(auth,email)
+}
+export const doSignOut=()=>{
+return auth.signOut()
+}
+auth.onAuthStateChanged(user => {
+  if (user) {
+    console.log("User logged in:", user);
+  } else {
+    console.log("User logged out");
+  }
+});
+
+export const doSignInWithGoogle= async()=>{
+  const provider=new GoogleAuthProvider()
+  const data=await signInWithPopup(auth,provider)
+  return data;
 }

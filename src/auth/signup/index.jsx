@@ -45,7 +45,6 @@ const Signup = () => {
       } else {
         navigate('/');
       }
-      console.log('create user account:', user);
     })
     .catch((error) => {
       console.error('Error create user:', error.message);

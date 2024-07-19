@@ -5,8 +5,7 @@ import SubmitButton from '../../components/global/SubmitButton';
 import { Link, useNavigate } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
 import theme from '../../theme';
-import { signIn } from '../firebaseMethods';
-
+import {  signIn } from '../firebaseMethods';
 const Login = () => {
   const { text, checkbox_text, reset_link, button_text, fields, link } =
     Auth_Data?.login || {};
@@ -43,7 +42,6 @@ const Login = () => {
         } else {
           navigate('/');
         }
-        console.log('User login account:', user);
       })
       .catch((error) => {
         console.error('Error login user:', error.message);
@@ -68,7 +66,7 @@ const Login = () => {
         }}
       >
         <Box>
-          <Typography 
+          <Typography
             sx={theme.typography.h5}
           >
             {text}
@@ -154,15 +152,16 @@ const Login = () => {
               </>
             }
           />
-          <Link to={reset_link?.href}>
+            <Link to={link?.reset}>
             <Typography
               sx={{
-                fontSize: '14px',
-                fontWeight: 400,
-                color: '#404040',
+                fontSize: '16px',
+                fontWeight: 500,
+                color: '#008000',
+                textDecoration: 'underLine',
               }}
             >
-              {reset_link?.text}
+              Forget password?
             </Typography>
           </Link>
         </Box>
@@ -219,18 +218,6 @@ const Login = () => {
               }}
             >
               {link?.text}
-            </Typography>
-          </Link>
-          <Link to={link?.reset}>
-            <Typography
-              sx={{
-                fontSize: '16px',
-                fontWeight: 500,
-                color: '#008000',
-                textDecoration: 'underLine',
-              }}
-            >
-              reset password
             </Typography>
           </Link>
         </Box>

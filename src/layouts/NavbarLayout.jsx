@@ -14,6 +14,7 @@ import { Auth_Data } from '../constants/auth_constant';
 import { useNavigate } from 'react-router-dom';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import { getAuth } from 'firebase/auth';
+import { doSignOut } from '../auth/firebaseMethods';
 const pages = ['About', 'Pricing', 'Blog'];
 const settings = ['Logout'];
 
@@ -30,7 +31,6 @@ export const NavbarLayout = ({ onNavOpen }) => {
   };
 
   const handleCloseNavMenu = () => {
-
     setAnchorElNav(null);
   };
 
@@ -38,15 +38,10 @@ export const NavbarLayout = ({ onNavOpen }) => {
     setAnchorElUser(null);
   };
   const handleLogout = () => {
-    const auth=getAuth()
-    const user=auth.currentUser
-    if (user) {
-          navigate('/')
-          localStorage.removeItem('token');
-        }
-        else{
-          console.log('error')
-  }
+    doSignOut().then(()=>{
+      navigate('/')
+      localStorage.removeItem('token');
+    })
   };
   return (
     <>
