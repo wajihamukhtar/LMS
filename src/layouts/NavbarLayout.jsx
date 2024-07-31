@@ -13,7 +13,6 @@ import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
 import { Auth_Data } from '../constants/auth_constant';
 import { useNavigate } from 'react-router-dom';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
-import { getAuth } from 'firebase/auth';
 import { doSignOut } from '../auth/firebaseMethods';
 const pages = ['About', 'Pricing', 'Blog'];
 const settings = ['Logout'];

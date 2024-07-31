@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box,} from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { Outlet } from 'react-router-dom';
@@ -41,20 +41,26 @@ const LayoutContainer = styled('div')({
 
 const DashboardLayout = () => {
   const [openNav, setOpenNav] = useState(true);
-
+  // const userSliceData=useSelector((a)=>a.user)
+  // const dispatch=useDispatch()
+  // const updateSliceData=()=>{
+  //   dispatch(update("ali"))
+  // }
+  
   const handlePathnameChange = useCallback(() => {
     if (openNav) {
       setOpenNav(false);
     }
   }, [openNav]);
-
+  
   useEffect(() => {
     handlePathnameChange();
   }, []);
-
+  
   return (
     <>
       <NavbarLayout onNavOpen={() => setOpenNav(true)} />
+      {/* <Button variant='contained'  >updateData</Button> */}
       <SidebarLayout onClose={() => setOpenNav(false)} open={openNav} />
       <LayoutRoot>
         <LayoutBodyRoot>
@@ -64,7 +70,7 @@ const DashboardLayout = () => {
                 px: { xs: 2, sm: 2, md: 3 },
                 py: { xs: 2, sm: 2.5, md: 3, lg: 5 },
               }}
-            >
+              >
               <Outlet />
             </Box>
           </LayoutContainer>

@@ -6,23 +6,27 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
 import theme from '../../theme';
 import {  signIn } from '../firebaseMethods';
+import { useDispatch, useSelector } from 'react-redux';
+import { update } from '../../redux/reducers/userSlice';
 const Login = () => {
-  const { text, checkbox_text, reset_link, button_text, fields, link } =
+  const { text, checkbox_text,  button_text, fields, link } =
     Auth_Data?.login || {};
   const [userData, setUserData] = useState({
     email: '',
     password: '',
     remember_me: '',
   });
-  const [rememberMe, setRememberMe] = useState(false);
+  const LoginSliceData=useSelector((a)=>a.login)
+  const dispatch=useDispatch()
+
+   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate()
 
   const handleInputChange = (e) => {
     setUserData({
       ...userData,
       [e.target.name]: e.target.value,
-    });
-
+    })
   };
   const handleChangeRemember = (event) => {
     setRememberMe(event.target.checked);
@@ -34,6 +38,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setRememberMe(false)
+    dispatch(update(userData))
     signIn(userData.email, userData.password)
       .then((user) => {
         if (user) {
@@ -47,13 +52,14 @@ const Login = () => {
         console.error('Error login user:', error.message);
       });
   };
+  console.log(update)
   return (
     <>
       <Box
         action="#"
         component={'form'}
         type={'submit'}
-        onSubmit={(e) => handleSubmit(e)}
+        onSubmit={handleSubmit}
         sx={{
           width: '100%',
           minHeight: '400px',

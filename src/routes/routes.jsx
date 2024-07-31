@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
 
-import { privateRoutes, publicRoutes } from './paths';
+
 import PrivateRoutes from './privateRoute';
 import PublicRoutes from './publicRoute';
 import NotFound from '../notFound';
+import { privateRoutes, publicRoutes } from './paths';
 
 const AppRoutes = ({ _publicRoutes, _privateRoutes }) => {
   let routes = useRoutes([

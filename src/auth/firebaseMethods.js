@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword , getAuth,  signInWithEmailAndPassword, sendPasswordResetEmail, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword , getAuth,  signInWithEmailAndPassword, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { app } from "./firebaseConfig";
 const auth =getAuth(app)
 
@@ -31,7 +31,6 @@ auth.onAuthStateChanged(user => {
     console.log("User logged out");
   }
 });
-
 export const doSignInWithGoogle= async()=>{
   const provider=new GoogleAuthProvider()
   const data=await signInWithPopup(auth,provider)

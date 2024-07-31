@@ -1,9 +1,14 @@
+import { Provider } from 'react-redux';
 import './App.css';
-import ResetPassword from './auth/resetpassword';
 import RouteProvider from './routes/routes';
+import store from './redux/store';
 
 function App() {
-  return <RouteProvider/>;
+  return (
+  <Provider store={store}>
+  <RouteProvider/>
+  </Provider>
+  );
 }
 
 export default App;

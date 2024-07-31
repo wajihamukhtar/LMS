@@ -5,6 +5,8 @@ import SubmitButton from '../../components/global/SubmitButton';
 import { Link, useNavigate } from 'react-router-dom';
 import { Auth_Data } from '../../constants/auth_constant';
 import { signUp } from '../firebaseMethods';
+import { useDispatch, useSelector } from 'react-redux';
+import { update } from '../../redux/reducers/userSlice';
 
 const Signup = () => {
   const { text, button_text, fields, link } = Auth_Data?.signup || {};
@@ -16,6 +18,7 @@ const Signup = () => {
     email: '',
     password: '',
   });
+ 
 
   const handleInputChange = (e) => {
     setUserData({

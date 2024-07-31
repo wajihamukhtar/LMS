@@ -176,6 +176,7 @@ const theme = createTheme({
         root: {
           maxWidth: '1260px !important',
           margin: '0 auto',
+          // color:#4986fc,purple #ce4be8,blue #207ce5, tarbooz #dc3545,#673ab7
         },
       },
     },
